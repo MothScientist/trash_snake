@@ -1,0 +1,3 @@
+# Snake Search
+*The project does not yet have an explicit structure and is a set of functions for working with the Windows file manager, for example: information about free and occupied space in a convenient form, searching for files by their name, as well as by the contents inside them, converting file types. There are also ideas to add many other functions that will soon be formed into some kind of program and in a convenient form it will be possible to use the functions described above.
+The implementation will be done in Python with some C++ features included.*
