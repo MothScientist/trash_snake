@@ -2,12 +2,12 @@
 *.png
 *.Ink
 
+updates/
+
 desktop.ini
 
 # PyCharm
 .idea
-
-updates/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

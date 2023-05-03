@@ -21,8 +21,20 @@ file with a set of C++ functions.*
 * *Removed caching (useless in a similar program).*
 * *The structure of the "file_search.py" module has been redesigned (it was previously part of the single "search_side.py" module).*
 
-## Version 0.0.20 (*May 27, 2023*)
+## Version 0.0.20 (*April 27, 2023*)
 ##### Information about disks in graphs and changes in the application interface ############
-* *Changing the structure of the DocSearching class*
+* *Changing the structure of the DocSearching class.*
 * *Adding the "space_on_disks_graph" module using the matplotlib and numpy libraries, which displays a graph with information about the disk space usage on the computer.*
-* *Application interface updated to pre-alpha version*
+* *Application interface updated to pre-alpha version.*
+
+## Version 0.0.21 (*May ___, 2023*)
+##### Small UI update ############
+* *Visible UI updated to pre-alpha.*
+
+*... Work continues on handling user input.*
+
+## Version 0.0.22 (*May ___, 2023*)
+##### Finished work on processing user input in 2/3 of the application's functions ############
+* *None*
+* *None*
+* *None*
