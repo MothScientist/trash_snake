@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import font
+from tkinter import filedialog
 import logging
 import disk_space
 import input_validation
@@ -94,7 +95,7 @@ def storage_info_window():
     window_main.withdraw()  # Closes parent window when opened
 
     window_storage_info = tk.Toplevel(window_main)
-    window_storage_info["bg"] = "#8B470B"
+    window_storage_info["bg"] = "#211360"
     window_storage_info.title("Disk space information")
     window_storage_info.geometry("550x400")
     window_storage_info.resizable(width=False, height=False)
@@ -111,47 +112,67 @@ def storage_info_window():
     info_disk_list = ""
     for i in range(len(storages)):
         info_disk_list += storages[i] + storage_area[i] + "\t\n\n"
-    #
 
-    # create_graph_progress = ttk.Progressbar(window_storage_info, orient="horizontal", length=300, mode="determinate",
-    # takefocus=True, maximum=100)
+    # Input Field
+    check_keywords_entry = (window_storage_info.register(input_validation.check_filename), "%P")
 
-    # create_graph_progress['value'] = 0
-    # create_graph_progress.place(x=100, y=300)
-    # create_graph_progress['value'] = 50
+    filename_entry = ttk.Entry(window_storage_info, width=30, validate="key", validatecommand=check_keywords_entry)
+
+    filename_entry.place(x=145, y=359)
+
+    def data_processing_png():
+        try:
+            save_directories = filedialog.askdirectory(parent=window_storage_info, title='Select directories')
+            filename = filename_entry.get()
+            if len(filename) == 0:
+                filename = "MemoryInfo"
+            disk_space.space_on_disks_graph(save_directories, filename)
+            logging.debug(f"Device memory data saved successfully: {save_directories}/{filename}")
+        except Exception as e:
+            logging.error(f"Image save error: {e}")
+
+    def data_processing_txt():
+        try:
+            save_directories = filedialog.askdirectory(parent=window_storage_info, title='Select directories')
+            filename = filename_entry.get()
+            if len(filename) == 0:
+                filename = "MemoryInfo"
+            with open(f"{save_directories}/{filename}.txt", "w") as file:
+                file.write(info_disk_list)
+                logging.debug(f"Device memory data saved successfully: {save_directories}/{filename}")
+        except Exception as e:
+            logging.error(f"Error writing to file: {e}")
 
     # Buttons
-    save_png_button = tk.Button(window_storage_info, text="Save as .png", width=15,
-                                font=font.Font(family="Arial", size=12, weight="bold", slant="italic",
-                                               underline=False, overstrike=False), fg="black", bg="white")
-    save_txt_button = tk.Button(window_storage_info, text="Save as .txt", width=15,
-                                font=font.Font(family="Arial", size=12, weight="bold", slant="italic",
-                                               underline=False, overstrike=False), fg="black", bg="white")
+    save_png_button = tk.Button(window_storage_info, text=".png", width=14,
+                                font=font.Font(family="Arial", size=10, weight="bold", slant="italic",
+                                               underline=False, overstrike=False), fg="black", bg="white",
+                                command=data_processing_png)
 
-    save_png_button.place(x=90, y=360)
-    save_txt_button.place(x=300, y=360)
+    save_txt_button = tk.Button(window_storage_info, text=".txt", width=14,
+                                font=font.Font(family="Arial", size=10, weight="bold", slant="italic",
+                                               underline=False, overstrike=False), fg="black", bg="white",
+                                command=data_processing_txt)
+
+    save_png_button.place(x=425, y=340)
+    save_txt_button.place(x=425, y=370)
 
     # Labels
     main_info_label = tk.Label(window_storage_info, text=info_disk_list,
-                               font=8, fg="white", bg="#8B470B")
-    input_0_label = tk.Label(window_storage_info, text="Write the file name:",
-                             font=8, fg="white", bg="#8B470B")
-    input_1_label = tk.Label(window_storage_info, text="(without extension)",
-                             font=6, fg="white", bg="#8B470B")
-    choose_label = tk.Label(window_storage_info, text="And Click =)",
-                            font=font.Font(family="Arial", size=10, weight="bold", slant="italic"),
-                            fg="white", bg="#8B470B")
+                               font=font.Font(family="Arial", size=14, weight="normal", slant="roman",
+                                              underline=False, overstrike=False), fg="white", bg="#211360")
+
+    input_label = tk.Label(window_storage_info, text="You can save this data by entering a name for the file below:",
+                           font=font.Font(family="Arial", size=12, weight="normal", slant="roman",
+                                          underline=True, overstrike=False), fg="white", bg="#211360")
+
+    save_label = tk.Label(window_storage_info, text="save as...",
+                          font=font.Font(family="Arial", size=12, weight="normal", slant="italic",
+                                         underline=False, overstrike=False), fg="white", bg="#211360")
 
     main_info_label.place(x=0, y=0)
-    input_0_label.place(x=10, y=302)
-    input_1_label.place(x=12, y=320)
-    choose_label.place(x=235, y=335)
-
-    # Input Field
-    check_keywords_entry = (window_storage_info.register(input_validation.check_keywords), "%P")
-    filename_entry = ttk.Entry(window_storage_info, width=38, validate="key", validatecommand=check_keywords_entry)
-
-    filename_entry.place(x=155, y=305)
+    input_label.place(x=0, y=325)
+    save_label.place(x=340, y=355)
 
     window_storage_info.protocol("WM_DELETE_WINDOW", lambda: [window_main.deiconify(),
                                                               window_storage_info.destroy()])
