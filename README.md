@@ -1,2 +1,31 @@
-# Snake Search
-*This project was born from the idea and the need for me (a novice developer) to acquire a pet project and at the same time consolidate / acquire / improve programming skills. This is a desktop application that is written in python (using C++ inserts, which are essentially just to show that I can combine these 2 languages in one project) using the tkinter library, which is made of graphics part (never use tkinter, use PyQt if necessary). The application allows (or will allow in the future) to perform a deep search for files on a Windows computer (by file names, extensions, and also by the information that is inside them), get information about the amount of memory on your computer (as well as graphs using matplotlib) and file conversion (txt -> mp3, pdf -> txt , jpeg -> ico, etc...) The idea of such an application was born from a previously written program that just helping me find a lost file on my computer among a million other files and folders.I would be happy if you give a star to the project to support my endeavours.*
+# Welcome to Snake Search Project!
+Hi! This project does not carry any payload. Made as the first relatively large independent project, although for the most part it is a set of functions that I implemented earlier, which I put together using a graphical interface.
+# What features does this program have?
+
+ - Search files by name
+ - Searching for files by their content (next - *Deep Search*)
+ - Providing information about the physical storage media on the computer, as well as a convenient presentation of this information in the form of graphs using the *matplotlb library*
+ - Several types of file conversion to other formats
+
+## Project structure
+```mermaid
+graph LR
+A(src) --> B(modules)
+A --> C(tests)
+B --> D(__init__.py)
+B --> E(__main__.py)
+B --> F(disk_space.py)
+B --> H(file_conversion.py)
+B --> G(input_validation.py)
+B --> J(search_engine.py)
+C --> L(test_input_validation.py)
+C --> K(test_search_engine.py)
+C --> I(test_sort_tiles_extensions.py)
+```
+* *src\modules* - directory with all the necessary modules for work.
+* *src\tests* - directory with tests.
+
+
+
+# How to install and run?
+*TBA*

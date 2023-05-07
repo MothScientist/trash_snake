@@ -54,10 +54,10 @@ def space_on_disks_graph(full_path_to_save_image, image_name):  # save info abou
     bottom = np.zeros(len(storages))
 
     for _, area in storage_area.items():
-        p = ax.bar(storages, area, width, label=_, bottom=bottom)
+        p = ax.bar(storages, area, width, label=_, bottom=bottom, edgecolor="black")
         bottom += area
 
-        ax.bar_label(p, label_type='center')
+        ax.bar_label(p)
 
     ax.set_title("Disk space usage")
     ax.legend()

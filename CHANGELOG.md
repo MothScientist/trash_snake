@@ -27,14 +27,11 @@ file with a set of C++ functions.*
 * *Adding the "space_on_disks_graph" module using the matplotlib and numpy libraries, which displays a graph with information about the disk space usage on the computer.*
 * *Application interface updated to pre-alpha version.*
 
-## Version 0.0.21 (*May ___, 2023*)
-##### Small UI update ############
-* *Visible UI updated to pre-alpha.*
+## Version 0.0.30 (*May 7, 2023*)
+##### Pre-alpha version ############
+* *Disk space information and File conversion in graphical and functional terms brought to the alpha version.*
+* *Changes in the README.md file.*
+* *Updated requirements.txt, but currently has redundant dependencies.*
 
-*... Work continues on handling user input.*
-
-## Version 0.0.22 (*May ___, 2023*)
-##### Finished work on processing user input in 2/3 of the application's functions ############
-* *None*
-* *None*
-* *None*
+*Work continues on handling user input in the section "Search settings input window".*\
+*In the next version, comments will be added and the logging area will be expanded.*
